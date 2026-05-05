@@ -26,7 +26,7 @@ $(NAME): $(OBJS)
 			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:	
-		@$(RM) $(OBJS)
+		@$(RM) $(OBJS)  *_shrubbery
 
 
 fclean:	clean

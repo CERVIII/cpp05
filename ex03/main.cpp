@@ -26,36 +26,28 @@ int main()
 	// Creamos un Bureaucrat de máximo rango (puede firmar y ejecutar cualquier formulario)
 	Bureaucrat ceo("CEO", 1);
 
-	// ==========================================
-	// 1. El Intern crea un RobotomyRequestForm
-	// ==========================================
-	// El Intern recibe el nombre del formulario y el objetivo como strings
+	
+	// Test 1. El Intern crea un RobotomyRequestForm
+	std::cout << "TEST 1:" << std::endl;
 	AForm *form1 = intern.makeForm("robotomy request", "Bender");
-	// Si la creación fue exitosa (form1 no es NULL)
 	if (form1)
 	{
-		// El CEO firma el formulario (si tiene el rango suficiente)
 		ceo.signForm(*form1);
-		// El CEO ejecuta el formulario (si está firmado y tiene el rango suficiente)
 		ceo.executeForm(*form1);
-		// Liberamos la memoria del formulario creado dinámicamente
 		delete form1;
 	}
 
-	// ==========================================
-	// 2. El Intern intenta crear un formulario desconocido
-	// ==========================================
-	// Intentamos crear un formulario que no existe
+
+	// Test 2. El Intern intenta crear un formulario desconocido
+	std::cout << "\nTEST 2:" << std::endl;
 	AForm *form2 = intern.makeForm("unknown form", "Target");
-	// Como el formulario no existe, makeForm devuelve NULL
 	if (!form2)
 	{
-		std::cout << "Form2 is NULL (correcto)" << std::endl;
+		std::cout << "Form2 is NULL" << std::endl;
 	}
 
-	// ==========================================
-	// 3. El Intern crea un ShrubberyCreationForm
-	// ==========================================
+	// Test 3. El Intern crea un ShrubberyCreationForm
+	std::cout << "\nTEST 3:" << std::endl;
 	AForm *form3 = intern.makeForm("shrubbery creation", "garden");
 	if (form3)
 	{
@@ -64,9 +56,8 @@ int main()
 		delete form3;
 	}
 
-	// ==========================================
-	// 4. El Intern crea un PresidentialPardonForm
-	// ==========================================
+	// Test 4. El Intern crea un PresidentialPardonForm
+	std::cout << "\nTEST 4:" << std::endl;
 	AForm *form4 = intern.makeForm("presidential pardon", "Zoidberg");
 	if (form4)
 	{

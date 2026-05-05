@@ -22,41 +22,27 @@
 
 int main()
 {
-	// 1. Creamos un burócrata de máximo nivel (grado 1)
-	Bureaucrat ceo("CEO", 1); // Puede firmar y ejecutar cualquier formulario
+	// Creamos un burócrata de máximo nivel (grado 1)
+	Bureaucrat ceo("CEO", 1);
 
-	// ==============================================
-	// 2. Prueba con ShrubberyCreationForm (Árboles)
-	// ==============================================
-	ShrubberyCreationForm shrub("homep"); // Requiere grado 145 para firmar, 137 para ejecutar
+	// Test 1. Prueba con ShrubberyCreationForm
+	std::cout << "TEST 1:" << std::endl;
+	ShrubberyCreationForm shrub("homep");
+	ceo.signForm(shrub);
+	ceo.executeForm(shrub);
 
-	// 2a. El CEO firma el formulario (siempre tendrá éxito por su alto grado)
-	ceo.signForm(shrub); // Output esperado: "CEO signed Shrubbery Creation"
-
-	// 2b. El CEO ejecuta el formulario (creará el archivo home_shrubbery)
-	ceo.executeForm(shrub); // Output esperado: "CEO executed Shrubbery Creation"
-
-	// ==============================================
-	// 3. Prueba con RobotomyRequestForm (Robotización)
-	// ==============================================
-	RobotomyRequestForm robot("Bender"); // Requiere grado 72 para firmar, 45 para ejecutar
-
-	// 3a. Firma (éxito asegurado)
-	ceo.signForm(robot); // Output: "CEO signed Robotomy Request"
-
-	// 3b. Ejecución (50% de éxito aleatorio)
-	ceo.executeForm(robot); // Output alternará entre éxito y fallo
-
-	// ==============================================
-	// 4. Prueba con PresidentialPardonForm (Perdón)
-	// ==============================================
-	PresidentialPardonForm pardon("Zoidberg"); // Requiere grado 25 para firmar, 5 para ejecutar
-
-	// 4a. Firma (éxito asegurado)
-	ceo.signForm(pardon); // Output: "CEO signed Presidential Pardon"
-
-	// 4b. Ejecución (siempre muestra el mensaje de perdón)
-	ceo.executeForm(pardon); // Output: "Zoidberg has been pardoned by Zaphod Beeblebrox."
+	// Test 2. Prueba con RobotomyRequestForm
+	std::cout << "\nTEST 2:" << std::endl;
+	RobotomyRequestForm robot("Bender");
+	ceo.signForm(robot);
+	ceo.executeForm(robot);
+	
+	// Test 3. Prueba con PresidentialPardonForm
+	std::cout << "\nTEST 3:" << std::endl;
+	PresidentialPardonForm pardon("Zoidberg");
+	ceo.executeForm(pardon);
+	ceo.signForm(pardon);
+	ceo.executeForm(pardon);
 
 	return 0;
 }

@@ -16,6 +16,7 @@
 int main()
 {
 	// Test 1: Crear con grado válido y mostrar
+	std::cout << "TEST 1:" << std::endl;
 	try
 	{
 		Bureaucrat b1("Alice", 3);
@@ -29,9 +30,11 @@ int main()
 	}
 
 	// Test 2: Grado demasiado alto al crear
+	std::cout << "\nTEST 2:" << std::endl;
 	try
 	{
 		Bureaucrat b2("Bob", 0);
+		std::cout << b2 << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -39,22 +42,27 @@ int main()
 	}
 
 	// Test 3: Decrementar hasta excepción
+	std::cout << "\nTEST 3:" << std::endl;
 	try
 	{
 		Bureaucrat b3("Charlie", 150);
 		std::cout << b3 << std::endl;
+		b3.incrementGrade();
+		std::cout << "After increment: " << b3 << std::endl;
 		b3.decrementGrade();
+		b3.decrementGrade();
+		std::cout << "After decrement: " << b3 << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
 
-	return 0;
-
+	// Test 4: Crear grado invalido
+	std::cout << "\nTEST 4:" << std::endl;
 	try
 	{
-		Bureaucrat b4("Dave", 151); // This should throw an exception
+		Bureaucrat b4("Dave", 151);
 	}
 	catch (const std::exception &e)
 	{

@@ -17,11 +17,12 @@
 int main()
 {
 	// Test 1: Burocrata firma formulario válido
+	std::cout << "TEST 1:" << std::endl;
 	try
 	{
 		Bureaucrat b("Alice", 3);
 		Form f("Tax Form", 5, 15);
-		b.signForm(f); // Alice firma exitosamente
+		b.signForm(f);
 		std::cout << f << std::endl;
 	}
 	catch (std::exception &e)
@@ -30,20 +31,23 @@ int main()
 	}
 
 	// Test 2: Burocrata con grado insuficiente
+	std::cout << "\nTEST 2:" << std::endl;
 	try
 	{
 		Bureaucrat b("Bob", 50);
 		Form f("Secret Document", 30, 10);
-		b.signForm(f); // Bob no puede firmar
+		b.signForm(f);
 	}
-	catch (...)
+	catch (std::exception &e)
 	{
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
 
 	// Test 3: Formulario con grado inválido
+	std::cout << "\nTEST 3:" << std::endl;
 	try
 	{
-		Form f("Invalid", 0, 150); // Lanza GradeTooHighException
+		Form f("Invalid", 0, 150);
 	}
 	catch (std::exception &e)
 	{
